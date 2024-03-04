@@ -1,6 +1,7 @@
 import {
   Controller,
   Get,
+  Header,
   HttpCode,
   HttpStatus,
   Next,
@@ -20,9 +21,10 @@ export class CatController {
   }
 
   @HttpCode(HttpStatus.PAYMENT_REQUIRED)
+  @Header('Cache-Control', 'true')
   @Post()
-  saveCatData(@Res() @Next() response: Response) {
-    console.log(response);
+  saveCatData() {
+    console.log();
     // response.status(200).send('dilshan');
     // response.status(200).send(['dilsha']);
     // return 'dila';
