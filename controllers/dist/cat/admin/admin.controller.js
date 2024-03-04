@@ -6,16 +6,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CatModule = void 0;
+exports.AdminController = void 0;
 const common_1 = require("@nestjs/common");
-const cat_controller_1 = require("./cat.controller");
-const admin_controller_1 = require("./admin.controller");
-let CatModule = class CatModule {
+let AdminController = class AdminController {
 };
-exports.CatModule = CatModule;
-exports.CatModule = CatModule = __decorate([
-    (0, common_1.Module)({
-        controllers: [cat_controller_1.CatController, admin_controller_1.AdminController],
-    })
-], CatModule);
-//# sourceMappingURL=cat.module.js.map
+exports.AdminController = AdminController;
+exports.AdminController = AdminController = __decorate([
+    (0, common_1.Controller)('admin')
+], AdminController);
+//# sourceMappingURL=admin.controller.js.map

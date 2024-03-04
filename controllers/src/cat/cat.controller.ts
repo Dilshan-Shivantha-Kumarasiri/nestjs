@@ -13,6 +13,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { Request, Response } from 'express';
+import { Observable, of } from 'rxjs';
 
 @Controller('cat')
 export class CatController {
@@ -38,11 +39,11 @@ export class CatController {
     console.log('name : ', params.name);
   }
   @HttpCode(HttpStatus.PAYMENT_REQUIRED)
-  @Header('Cache-Control', 'true')
+  @Header('Cache-aa', 'true')
   @Post('/post')
   saveCatData(@Res() response: Response) {
     console.log();
-    response.header('Content-type', 'application/json');
+    response.header('Content-te', 'application/json');
     response.send();
     // response.status(200).send('dilshan');
     // response.status(200).send(['dilsha']);
@@ -80,5 +81,10 @@ export class CatController {
     if (version && version === '5') {
       return { url: 'http://localhost:3000/cat', statusCode: 301 };
     }
+  }
+
+  @Get('/car')
+  findAllCard(): Observable<any[]> {
+    return of(['dilshan']);
   }
 }
