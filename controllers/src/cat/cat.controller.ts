@@ -25,13 +25,18 @@ export class CatController {
   //   console.log(request);
   //   return ['dilshan', 'shivantha']; // still return json object
   // }
+  //
+  // @Get('/:id/:name')
+  // findAll(@Param() params: any) {
+  //   console.log('id : ', params.id);
+  //   console.log('name : ', params.name);
+  // }
 
   @Get('/:id/:name')
-  findAll(@Param() params: any) {
-    console.log('id : ', params.id);
+  findAll(@Param('id') id: number, @Param() params: any) {
+    console.log('id : ', id.toString());
     console.log('name : ', params.name);
   }
-
   @HttpCode(HttpStatus.PAYMENT_REQUIRED)
   @Header('Cache-Control', 'true')
   @Post('/post')
