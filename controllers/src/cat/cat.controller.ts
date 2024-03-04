@@ -5,6 +5,7 @@ import {
   HttpCode,
   HttpRedirectResponse,
   HttpStatus,
+  Param,
   Post,
   Query,
   Redirect,
@@ -15,14 +16,20 @@ import { Request, Response } from 'express';
 
 @Controller('cat')
 export class CatController {
-  @Get()
-  findAll(@Req() request: Request) {
-    // return 'This action return all action';
-    // return { name: 'dilshan' };
-    // return { name: 'dilshan' };
-    // console.log(request);
-    console.log(request);
-    return ['dilshan', 'shivantha']; // still return json object
+  // @Get()
+  // findAll(@Req() request: Request) {
+  //   // return 'This action return all action';
+  //   // return { name: 'dilshan' };
+  //   // return { name: 'dilshan' };
+  //   // console.log(request);
+  //   console.log(request);
+  //   return ['dilshan', 'shivantha']; // still return json object
+  // }
+
+  @Get('/:id/:name')
+  findAll(@Param() params: any) {
+    console.log('id : ', params.id);
+    console.log('name : ', params.name);
   }
 
   @HttpCode(HttpStatus.PAYMENT_REQUIRED)
