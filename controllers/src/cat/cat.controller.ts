@@ -23,8 +23,10 @@ export class CatController {
   @HttpCode(HttpStatus.PAYMENT_REQUIRED)
   @Header('Cache-Control', 'true')
   @Post()
-  saveCatData() {
+  saveCatData(@Res() response: Response) {
     console.log();
+    response.header('Content-type', 'application/json');
+    response.send();
     // response.status(200).send('dilshan');
     // response.status(200).send(['dilsha']);
     // return 'dila';
