@@ -6,18 +6,22 @@ import {
   HttpRedirectResponse,
   HttpStatus,
   Post,
+  Query,
   Redirect,
+  Req,
   Res,
 } from '@nestjs/common';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 
 @Controller('cat')
 export class CatController {
   @Get()
-  findAll() {
+  findAll(@Req() request: Request) {
     // return 'This action return all action';
     // return { name: 'dilshan' };
     // return { name: 'dilshan' };
+    // console.log(request);
+    console.log(request);
     return ['dilshan', 'shivantha']; // still return json object
   }
 
@@ -39,14 +43,30 @@ export class CatController {
   //   console.log('redirect');
   // }
 
-  @Get('/get')
-  @Redirect('https://nestjs.com', 302)
-  getCatData() {
-    const redirect: HttpRedirectResponse = {
-      url: 'http://localhost:3000/cat',
-      statusCode: 300,
-    };
-    console.log('redirect');
-    return redirect;
+  // @Get('/get')
+  // @Header('firstName', 'Dilshan shivnatha')
+  // @Redirect('https://nestjs.com', 302)
+  // getCatData() {
+  //   const redirect: HttpRedirectResponse = {
+  //     url: 'http://localhost:3000/cat',
+  //     statusCode: 302,
+  //   };
+  //   return redirect;
+  // }
+
+  // @Get('docs')
+  // @Redirect('https://docs.nestjs.com', 302)
+  // getDocs(@Query('version') version) {
+  //   if (version && version === '5') {
+  //     return { url: 'http://localhost:3000/cat' };
+  //   }
+  // }
+
+  @Get('docs')
+  @Redirect('https://docs.nestjs.com', 302)
+  getDocs(@Query('version') version) {
+    if (version && version === '5') {
+      return { url: 'http://localhost:3000/cat', statusCode: 301 };
+    }
   }
 }
