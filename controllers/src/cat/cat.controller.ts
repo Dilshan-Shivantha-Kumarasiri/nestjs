@@ -3,6 +3,7 @@ import {
   Get,
   Header,
   HttpCode,
+  HttpRedirectResponse,
   HttpStatus,
   Post,
   Redirect,
@@ -17,7 +18,7 @@ export class CatController {
     // return 'This action return all action';
     // return { name: 'dilshan' };
     // return { name: 'dilshan' };
-    // return ['dilshan', 'shivantha']; // still return json object
+    return ['dilshan', 'shivantha']; // still return json object
   }
 
   @HttpCode(HttpStatus.PAYMENT_REQUIRED)
@@ -32,9 +33,20 @@ export class CatController {
     // return 'dila';
   }
 
+  // @Get('/get')
+  // @Redirect('https://nestjs.com', 302)
+  // getCatData() {
+  //   console.log('redirect');
+  // }
+
   @Get('/get')
   @Redirect('https://nestjs.com', 302)
   getCatData() {
+    const redirect: HttpRedirectResponse = {
+      url: 'http://localhost:3000/cat',
+      statusCode: 300,
+    };
     console.log('redirect');
+    return redirect;
   }
 }
